@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d97a439a5f8719e43a5ab21e4e5d0436
+guid: a0d93c33dd4204febb0c7ae41246140a
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -11,4 +11,4 @@ ScriptedImporter:
   generateWrapperCode: 1
   wrapperCodePath: 
   wrapperClassName: 
-  wrapperCodeNamespace: 
+  wrapperCodeNamespace: dupa

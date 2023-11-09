@@ -3,32 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Vector2 = System.Numerics.Vector2;
-
+using UnityEngine.InputSystem.Composites;
+using dupa;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody _player;
-    private PlayerInputs _playerInputs;
+    private Control _playerInputs;
     
     private void Awake()
     {
         _player = GetComponent<Rigidbody>();
 
-        _playerInputs = new PlayerInputs();
-        
-        _playerInputs.Enable();
-        _playerInputs.Player.Move.performed += Move;
+        _playerInputs = new Control();
     }
 
-    private void Move(InputAction.CallbackContext context)
+    private void OnEnable()
     {
-        if (context.performed)
-        {
-            // Debug.Log(context.performed);
-            Debug.Log(_playerInputs.Player.Move.ReadValue<Vector2>());
-            // Vector2 inputVector = context.ReadValue<Vector2>();
-            // Debug.Log(inputVector);
-            // _player.AddForce(new Vector3(0, 0 ,0));
-        }
+        _playerInputs.Enable();
+        _playerInputs.player.move.performed += MoveOnPerformed;
+    }
+    private void OnDisable()
+    {
+        _playerInputs.Disable();
+        _playerInputs.player.move.performed -= MoveOnPerformed;
+    }
+    private void MoveOnPerformed(InputAction.CallbackContext obj)
+    {
+        Debug.Log(obj.ReadValue<Vector2>());
+        //Debug.Log(_playerInputs.Player.Move.);
+        //Vector2 move = _playerInputs.Player.Move.ReadValue<Vector2>();
+        //_player.velocity = new Vector3(move.X, 0, move.Y);
     }
 }
