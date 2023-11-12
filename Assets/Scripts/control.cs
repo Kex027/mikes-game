@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-namespace dupa
+namespace inputs
 {
     public partial class @Control: IInputActionCollection2, IDisposable
     {
@@ -37,6 +37,69 @@ namespace dupa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""7a661681-1f8e-4282-82ca-4cf565deb120"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""crouch"",
+                    ""type"": ""Value"",
+                    ""id"": ""5ac08482-de16-41c5-acfd-d0e63402b418"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""camera"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""bf47869b-0beb-400c-b8da-87206fe8f6df"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""switch camera 1"",
+                    ""type"": ""Button"",
+                    ""id"": ""051a1251-cdf6-46b2-90ae-d4ae50884ecf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""switch camera 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""d35baeb0-b4a8-4e31-b1c0-2c4569fae54e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""switch camera 3"",
+                    ""type"": ""Button"",
+                    ""id"": ""241edc40-d1fe-49e9-b1ae-9eb588d36f77"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""switch camera 4"",
+                    ""type"": ""Button"",
+                    ""id"": ""210b7cfe-c5c1-4549-9821-4a2cef2007ab"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -94,6 +157,83 @@ namespace dupa
                     ""action"": ""move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7314fc09-8344-4845-8276-1d3904ca5638"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cef1d4b7-3d5f-4235-a6a8-d6d9e9c231a8"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0bf8cfc6-ef07-4cf6-9cfd-42f24b3ef757"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef99defd-7077-4e20-9d8e-13c3abfac730"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""switch camera 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d1ccd2c-d274-45b3-9eb8-736e54ac4d5f"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""switch camera 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""116b0f00-7576-4cab-ac25-24012fb954fa"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""switch camera 3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf237236-a2a4-4a7e-8391-9a7cd519380d"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""switch camera 4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -103,6 +243,13 @@ namespace dupa
             // player
             m_player = asset.FindActionMap("player", throwIfNotFound: true);
             m_player_move = m_player.FindAction("move", throwIfNotFound: true);
+            m_player_jump = m_player.FindAction("jump", throwIfNotFound: true);
+            m_player_crouch = m_player.FindAction("crouch", throwIfNotFound: true);
+            m_player_camera = m_player.FindAction("camera", throwIfNotFound: true);
+            m_player_switchcamera1 = m_player.FindAction("switch camera 1", throwIfNotFound: true);
+            m_player_switchcamera2 = m_player.FindAction("switch camera 2", throwIfNotFound: true);
+            m_player_switchcamera3 = m_player.FindAction("switch camera 3", throwIfNotFound: true);
+            m_player_switchcamera4 = m_player.FindAction("switch camera 4", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -165,11 +312,25 @@ namespace dupa
         private readonly InputActionMap m_player;
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_player_move;
+        private readonly InputAction m_player_jump;
+        private readonly InputAction m_player_crouch;
+        private readonly InputAction m_player_camera;
+        private readonly InputAction m_player_switchcamera1;
+        private readonly InputAction m_player_switchcamera2;
+        private readonly InputAction m_player_switchcamera3;
+        private readonly InputAction m_player_switchcamera4;
         public struct PlayerActions
         {
             private @Control m_Wrapper;
             public PlayerActions(@Control wrapper) { m_Wrapper = wrapper; }
             public InputAction @move => m_Wrapper.m_player_move;
+            public InputAction @jump => m_Wrapper.m_player_jump;
+            public InputAction @crouch => m_Wrapper.m_player_crouch;
+            public InputAction @camera => m_Wrapper.m_player_camera;
+            public InputAction @switchcamera1 => m_Wrapper.m_player_switchcamera1;
+            public InputAction @switchcamera2 => m_Wrapper.m_player_switchcamera2;
+            public InputAction @switchcamera3 => m_Wrapper.m_player_switchcamera3;
+            public InputAction @switchcamera4 => m_Wrapper.m_player_switchcamera4;
             public InputActionMap Get() { return m_Wrapper.m_player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -182,6 +343,27 @@ namespace dupa
                 @move.started += instance.OnMove;
                 @move.performed += instance.OnMove;
                 @move.canceled += instance.OnMove;
+                @jump.started += instance.OnJump;
+                @jump.performed += instance.OnJump;
+                @jump.canceled += instance.OnJump;
+                @crouch.started += instance.OnCrouch;
+                @crouch.performed += instance.OnCrouch;
+                @crouch.canceled += instance.OnCrouch;
+                @camera.started += instance.OnCamera;
+                @camera.performed += instance.OnCamera;
+                @camera.canceled += instance.OnCamera;
+                @switchcamera1.started += instance.OnSwitchcamera1;
+                @switchcamera1.performed += instance.OnSwitchcamera1;
+                @switchcamera1.canceled += instance.OnSwitchcamera1;
+                @switchcamera2.started += instance.OnSwitchcamera2;
+                @switchcamera2.performed += instance.OnSwitchcamera2;
+                @switchcamera2.canceled += instance.OnSwitchcamera2;
+                @switchcamera3.started += instance.OnSwitchcamera3;
+                @switchcamera3.performed += instance.OnSwitchcamera3;
+                @switchcamera3.canceled += instance.OnSwitchcamera3;
+                @switchcamera4.started += instance.OnSwitchcamera4;
+                @switchcamera4.performed += instance.OnSwitchcamera4;
+                @switchcamera4.canceled += instance.OnSwitchcamera4;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -189,6 +371,27 @@ namespace dupa
                 @move.started -= instance.OnMove;
                 @move.performed -= instance.OnMove;
                 @move.canceled -= instance.OnMove;
+                @jump.started -= instance.OnJump;
+                @jump.performed -= instance.OnJump;
+                @jump.canceled -= instance.OnJump;
+                @crouch.started -= instance.OnCrouch;
+                @crouch.performed -= instance.OnCrouch;
+                @crouch.canceled -= instance.OnCrouch;
+                @camera.started -= instance.OnCamera;
+                @camera.performed -= instance.OnCamera;
+                @camera.canceled -= instance.OnCamera;
+                @switchcamera1.started -= instance.OnSwitchcamera1;
+                @switchcamera1.performed -= instance.OnSwitchcamera1;
+                @switchcamera1.canceled -= instance.OnSwitchcamera1;
+                @switchcamera2.started -= instance.OnSwitchcamera2;
+                @switchcamera2.performed -= instance.OnSwitchcamera2;
+                @switchcamera2.canceled -= instance.OnSwitchcamera2;
+                @switchcamera3.started -= instance.OnSwitchcamera3;
+                @switchcamera3.performed -= instance.OnSwitchcamera3;
+                @switchcamera3.canceled -= instance.OnSwitchcamera3;
+                @switchcamera4.started -= instance.OnSwitchcamera4;
+                @switchcamera4.performed -= instance.OnSwitchcamera4;
+                @switchcamera4.canceled -= instance.OnSwitchcamera4;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -209,6 +412,13 @@ namespace dupa
         public interface IPlayerActions
         {
             void OnMove(InputAction.CallbackContext context);
+            void OnJump(InputAction.CallbackContext context);
+            void OnCrouch(InputAction.CallbackContext context);
+            void OnCamera(InputAction.CallbackContext context);
+            void OnSwitchcamera1(InputAction.CallbackContext context);
+            void OnSwitchcamera2(InputAction.CallbackContext context);
+            void OnSwitchcamera3(InputAction.CallbackContext context);
+            void OnSwitchcamera4(InputAction.CallbackContext context);
         }
     }
 }
