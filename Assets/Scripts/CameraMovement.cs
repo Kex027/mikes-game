@@ -9,7 +9,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Transform direction;
     private Control _playerInputs;
     
-    [SerializeField] private GameObject[] cameraSpots;
+    [SerializeField] private GameObject[] cameraSpots; // chcesz pozycje tych punktow wiec bardzij oplaca sie brac transform a nie gameobject ( o jeden get mniej )
     private float _xRotation = 0;
     private float _yRotation = 0;
     [SerializeField] private float _sensinitivityX = 1000f;
@@ -20,13 +20,13 @@ public class CameraMovement : MonoBehaviour
     {
         _player = GetComponentInParent<CapsuleCollider>();
         _playerInputs = new Control();
-        _firstPersonCameraPosition = new Vector3(_player.transform.position.x, _player.height * 0.75f, _player.transform.position.z);
+        _firstPersonCameraPosition = new Vector3(_player.transform.position.x, _player.height * 0.75f, _player.transform.position.z); // zobacz czym jest local position
     }
 
     private void Start()
     {
         transform.position = _firstPersonCameraPosition;
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked; //:sunglesses: git
         Cursor.visible = false;
     }
     private void FixedUpdate()
@@ -45,13 +45,14 @@ public class CameraMovement : MonoBehaviour
     }
 
     private void HandleCameraPosition()
+        //to nie moze byc w updacie bo jest W HUJ NIEOPTYMALNE, robisz ze w tych eventach w camera switch !!!!! wykonuje sie raz na klik a nie 1 na klatke
     {
         switch (CameraSwitch.Instance.GetCurrentCamera())
         {
             case 1:
                 transform.SetParent(cameraSpots[0].transform, false);
                 Vector3 position = _player.transform.position;
-                _firstPersonCameraPosition = new Vector3(position.x, position.y - 1 + _player.height * 0.75f, position.z);
+                _firstPersonCameraPosition = new Vector3(position.x, position.y - 1 + _player.height * 0.75f, position.z); // zobacz czym jest local position
                 transform.position = _firstPersonCameraPosition;
                 break;
             case 2:
@@ -72,15 +73,11 @@ public class CameraMovement : MonoBehaviour
     private void RotateCameraAndPlayer()
     {
         Vector2 mousePosition = _playerInputs.player.camera.ReadValue<Vector2>();
-        _yRotation += mousePosition.x;
-        _xRotation += -mousePosition.y;
+        _yRotation += mousePosition.x * _sensinitivityX;
+        _xRotation += -mousePosition.y * _sensinitivityY;
 
-        if (CameraSwitch.Instance.GetCurrentCamera() == 1)
-            // _camera.transform.eulerAngles = new Vector3(-mousePosition.y * _sensinitivityY, mousePosition.x * _sensinitivityX, 0) * (Time.deltaTime);
-            // transform.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
-            transform.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
-            // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(_xRotation, _yRotation, 0),
-            //     Time.deltaTime * 10f);
+        if (CameraSwitch.Instance.GetCurrentCamera() == 1) // wyjebac to z updacji nie ma byc ifa zadnego
+            transform.rotation = Quaternion.Euler(_xRotation, 0, 0);
 
         // _player.transform.eulerAngles = new Vector3(0, mousePosition.x, 0) * (_sensinitivityX * Time.deltaTime);
         direction.transform.rotation = Quaternion.Euler(0, _yRotation, 0);
