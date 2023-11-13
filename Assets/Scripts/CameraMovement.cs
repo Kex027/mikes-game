@@ -2,32 +2,30 @@ using System;
 using UnityEngine;
 using inputs;
 
-
-//TODO nie moge zrobic pelnego obrotu myszkiem
 public class CameraMovement : MonoBehaviour
 {
     private CapsuleCollider _player;
     [SerializeField] private Transform direction;
     private Control _playerInputs;
     
-    [SerializeField] private GameObject[] cameraSpots; // chcesz pozycje tych punktow wiec bardzij oplaca sie brac transform a nie gameobject ( o jeden get mniej )
+    [SerializeField] private GameObject[] cameraSpots;
     private float _xRotation = 0;
     private float _yRotation = 0;
-    [SerializeField] private float _sensinitivityX = 1000f;
-    [SerializeField] private float _sensinitivityY = 1000f;
+    private float _sensitivityX = 0.5f;
+    private float _sensitivityY = 0.5f;
     private Vector3 _firstPersonCameraPosition;
 
     private void Awake()
     {
         _player = GetComponentInParent<CapsuleCollider>();
         _playerInputs = new Control();
-        _firstPersonCameraPosition = new Vector3(_player.transform.position.x, _player.height * 0.75f, _player.transform.position.z); // zobacz czym jest local position
+        _firstPersonCameraPosition = new Vector3(transform.localPosition.x, _player.height / 2 * 0.75f, transform.localPosition.z);
     }
 
     private void Start()
     {
         transform.position = _firstPersonCameraPosition;
-        Cursor.lockState = CursorLockMode.Locked; //:sunglesses: git
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
     private void FixedUpdate()
@@ -56,18 +54,22 @@ public class CameraMovement : MonoBehaviour
         {
             case 1:
                 transform.SetParent(cameraSpots[0].transform, false);
-                Vector3 position = _player.transform.position;
-                _firstPersonCameraPosition = new Vector3(position.x, position.y - 1 + _player.height * 0.75f, position.z); // zobacz czym jest local position
-                transform.position = _firstPersonCameraPosition;
+                transform.localPosition = _firstPersonCameraPosition;
                 break;
             case 2:
                 transform.SetParent(cameraSpots[1].transform, false);
+                transform.localPosition = Vector3.zero;
+                transform.localEulerAngles = Vector3.zero;
                 break;
             case 3:
                 transform.SetParent(cameraSpots[2].transform, false);
+                transform.localPosition = Vector3.zero;
+                transform.localEulerAngles = Vector3.zero;
                 break;
             case 4:
                 transform.SetParent(cameraSpots[3].transform, false);
+                transform.localPosition = Vector3.zero;
+                transform.localEulerAngles = Vector3.zero;
                 break;
             default:
                 transform.SetParent(cameraSpots[0].transform, false);
@@ -78,13 +80,10 @@ public class CameraMovement : MonoBehaviour
     private void RotateCameraAndPlayer()
     {
         Vector2 mousePosition = _playerInputs.player.camera.ReadValue<Vector2>();
-        _yRotation += mousePosition.x * _sensinitivityX;
-        _xRotation += -mousePosition.y * _sensinitivityY;
+        _yRotation += mousePosition.x * _sensitivityX;
+        _xRotation += -mousePosition.y * _sensitivityY;
 
-        if (CameraSwitch.Instance.GetCurrentCamera() == 1) // wyjebac to z updacji nie ma byc ifa zadnego
-            transform.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
-
-        // _player.transform.eulerAngles = new Vector3(0, mousePosition.x, 0) * (_sensinitivityX * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
         direction.transform.rotation = Quaternion.Euler(0, _yRotation, 0);
     }
 }

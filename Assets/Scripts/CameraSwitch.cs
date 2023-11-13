@@ -1,11 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using inputs;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
-using Vector2 = System.Numerics.Vector2;
 
 public class CameraSwitch : MonoBehaviour
 {
@@ -13,7 +8,7 @@ public class CameraSwitch : MonoBehaviour
 
     private Control _playerInputs;
 
-    private int currentCamera = 1;
+    private int _currentCamera = 1;
 
     private void Awake() 
     {
@@ -45,23 +40,23 @@ public class CameraSwitch : MonoBehaviour
 
     private void SwitchCamera1(InputAction.CallbackContext obj)
     {
-        currentCamera = 1;
+        _currentCamera = 1;
     }
     private void SwitchCamera2(InputAction.CallbackContext obj)
     {
-        currentCamera = 2;
+        _currentCamera = 2;
     }
     private void SwitchCamera3(InputAction.CallbackContext obj)
     {
-        currentCamera = 3;
+        _currentCamera = 3;
     }
     private void SwitchCamera4(InputAction.CallbackContext obj)
     {
-        currentCamera = 4;
+        _currentCamera = 4;
     }
 
     public int GetCurrentCamera()
     {
-        return currentCamera;
+        return _currentCamera;
     }
 }

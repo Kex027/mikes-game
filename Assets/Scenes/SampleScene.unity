@@ -1696,8 +1696,6 @@ MonoBehaviour:
   - {fileID: 1951875447}
   - {fileID: 71026198}
   - {fileID: 410208927}
-  _sensinitivityX: 10
-  _sensinitivityY: 6
 --- !u!1 &1054796123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2791,8 +2789,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 705507995}
+  - {fileID: 612943252}
   - {fileID: 313456591}
   - {fileID: 1498051423}
   - {fileID: 692784005}
   - {fileID: 1807196920}
-  - {fileID: 612943252}
