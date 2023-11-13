@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using inputs;
 
@@ -32,6 +33,10 @@ public class CameraMovement : MonoBehaviour
     private void FixedUpdate()
     {
         HandleCameraPosition();
+    }
+
+    private void Update()
+    {
         RotateCameraAndPlayer();
     }
 
@@ -77,7 +82,7 @@ public class CameraMovement : MonoBehaviour
         _xRotation += -mousePosition.y * _sensinitivityY;
 
         if (CameraSwitch.Instance.GetCurrentCamera() == 1) // wyjebac to z updacji nie ma byc ifa zadnego
-            transform.rotation = Quaternion.Euler(_xRotation, 0, 0);
+            transform.rotation = Quaternion.Euler(_xRotation, _yRotation, 0);
 
         // _player.transform.eulerAngles = new Vector3(0, mousePosition.x, 0) * (_sensinitivityX * Time.deltaTime);
         direction.transform.rotation = Quaternion.Euler(0, _yRotation, 0);
