@@ -4,6 +4,7 @@ using inputs;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private Transform dierction;
     private Rigidbody _rb;
     private CapsuleCollider _player;
     private Control _playerInputs;
@@ -61,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         Vector2 inputVector = _playerInputs.player.move.ReadValue<Vector2>();
-        Vector3 direction = transform.forward * inputVector.y + transform.right * inputVector.x;
+        Vector3 direction = dierction.forward * inputVector.y + dierction.right * inputVector.x;
         _rb.AddForce(new Vector3(direction.x, 0, direction.z).normalized * (_movementSpeed * Time.deltaTime * 700));
     }
     private void Jump(InputAction.CallbackContext context)

@@ -183,7 +183,7 @@ namespace inputs
                 {
                     ""name"": """",
                     ""id"": ""0bf8cfc6-ef07-4cf6-9cfd-42f24b3ef757"",
-                    ""path"": ""<Mouse>/position"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
