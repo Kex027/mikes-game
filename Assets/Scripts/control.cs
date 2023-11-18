@@ -100,6 +100,15 @@ namespace inputs
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""9288b3b8-35be-4216-9339-6b7158521ddf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -234,6 +243,17 @@ namespace inputs
                     ""action"": ""switch camera 4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6ee67988-4e7b-4f8f-8625-ec386f69799b"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -250,6 +270,7 @@ namespace inputs
             m_player_switchcamera2 = m_player.FindAction("switch camera 2", throwIfNotFound: true);
             m_player_switchcamera3 = m_player.FindAction("switch camera 3", throwIfNotFound: true);
             m_player_switchcamera4 = m_player.FindAction("switch camera 4", throwIfNotFound: true);
+            m_player_shoot = m_player.FindAction("shoot", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -319,6 +340,7 @@ namespace inputs
         private readonly InputAction m_player_switchcamera2;
         private readonly InputAction m_player_switchcamera3;
         private readonly InputAction m_player_switchcamera4;
+        private readonly InputAction m_player_shoot;
         public struct PlayerActions
         {
             private @Control m_Wrapper;
@@ -331,6 +353,7 @@ namespace inputs
             public InputAction @switchcamera2 => m_Wrapper.m_player_switchcamera2;
             public InputAction @switchcamera3 => m_Wrapper.m_player_switchcamera3;
             public InputAction @switchcamera4 => m_Wrapper.m_player_switchcamera4;
+            public InputAction @shoot => m_Wrapper.m_player_shoot;
             public InputActionMap Get() { return m_Wrapper.m_player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -364,6 +387,9 @@ namespace inputs
                 @switchcamera4.started += instance.OnSwitchcamera4;
                 @switchcamera4.performed += instance.OnSwitchcamera4;
                 @switchcamera4.canceled += instance.OnSwitchcamera4;
+                @shoot.started += instance.OnShoot;
+                @shoot.performed += instance.OnShoot;
+                @shoot.canceled += instance.OnShoot;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -392,6 +418,9 @@ namespace inputs
                 @switchcamera4.started -= instance.OnSwitchcamera4;
                 @switchcamera4.performed -= instance.OnSwitchcamera4;
                 @switchcamera4.canceled -= instance.OnSwitchcamera4;
+                @shoot.started -= instance.OnShoot;
+                @shoot.performed -= instance.OnShoot;
+                @shoot.canceled -= instance.OnShoot;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -419,6 +448,7 @@ namespace inputs
             void OnSwitchcamera2(InputAction.CallbackContext context);
             void OnSwitchcamera3(InputAction.CallbackContext context);
             void OnSwitchcamera4(InputAction.CallbackContext context);
+            void OnShoot(InputAction.CallbackContext context);
         }
     }
 }
