@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Moving_cube
 {
-    public class CircularMovement : MonoBehaviour
+    public class MovingCube : MonoBehaviour
     {
     
         private float _angularSpeed = 8f;

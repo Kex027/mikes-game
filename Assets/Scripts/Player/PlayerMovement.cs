@@ -22,6 +22,7 @@ namespace Player
 
         private float _playerHeight;
         private float _scaleOnCrouch = 0.75f;
+        private float _getToCrouchSpeed = 25f;
     
         private void Awake()
         {
@@ -77,22 +78,15 @@ namespace Player
         private void Crouch()
         {
             bool isCrouching = _playerInputs.player.crouch.ReadValue<float>() > 0.1f;
+            
+            if (IsOnGround())
+                _rb.drag = _dragOnCrouch;
+            
             if (isCrouching)
-            {
-                if (IsOnGround())
-                    _rb.drag = _dragOnCrouch;
-            
-                _player.height = Mathf.Lerp(_player.height, _playerHeight * _scaleOnCrouch, Time.deltaTime * 10f);
-            }
+                _player.height = Mathf.Lerp(_player.height, _playerHeight * _scaleOnCrouch, Time.deltaTime * _getToCrouchSpeed);
             else
-            {
-                if (IsOnGround())
-                    _rb.drag = _dragOnWalk;
-            
                 if (!HittingCeiling())
-                    _player.height = Mathf.Lerp(_player.height, _playerHeight, Time.deltaTime * 10f);
-            }
-
+                    _player.height = Mathf.Lerp(_player.height, _playerHeight, Time.deltaTime * _getToCrouchSpeed);
         }
     }
 }

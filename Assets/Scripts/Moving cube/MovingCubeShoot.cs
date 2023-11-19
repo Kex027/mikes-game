@@ -1,17 +1,18 @@
+using Interfaces;
 using UnityEngine;
 
 namespace Moving_cube
 {
     public class MovingCubeShoot : MonoBehaviour, IShootable
     {
-        private CircularMovement _circularMovement;
+        private MovingCube _circularMovement;
 
         private void Awake()
         {
-            _circularMovement = GetComponent<CircularMovement>();
+            _circularMovement = GetComponent<MovingCube>();
         }
-    
-        public void Shoot()
+
+        public void Shoot(RaycastHit hit)
         {
             _circularMovement.moving = !_circularMovement.moving;
         }

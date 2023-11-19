@@ -109,6 +109,15 @@ namespace inputs
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""generate"",
+                    ""type"": ""Button"",
+                    ""id"": ""d56b3c59-c6f4-424f-a1ce-881fada3e690"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -247,11 +256,22 @@ namespace inputs
                 {
                     ""name"": """",
                     ""id"": ""6ee67988-4e7b-4f8f-8625-ec386f69799b"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3fa5e340-f313-4baf-ad7d-e28316618f3a"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""generate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -271,6 +291,7 @@ namespace inputs
             m_player_switchcamera3 = m_player.FindAction("switch camera 3", throwIfNotFound: true);
             m_player_switchcamera4 = m_player.FindAction("switch camera 4", throwIfNotFound: true);
             m_player_shoot = m_player.FindAction("shoot", throwIfNotFound: true);
+            m_player_generate = m_player.FindAction("generate", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -341,6 +362,7 @@ namespace inputs
         private readonly InputAction m_player_switchcamera3;
         private readonly InputAction m_player_switchcamera4;
         private readonly InputAction m_player_shoot;
+        private readonly InputAction m_player_generate;
         public struct PlayerActions
         {
             private @Control m_Wrapper;
@@ -354,6 +376,7 @@ namespace inputs
             public InputAction @switchcamera3 => m_Wrapper.m_player_switchcamera3;
             public InputAction @switchcamera4 => m_Wrapper.m_player_switchcamera4;
             public InputAction @shoot => m_Wrapper.m_player_shoot;
+            public InputAction @generate => m_Wrapper.m_player_generate;
             public InputActionMap Get() { return m_Wrapper.m_player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -390,6 +413,9 @@ namespace inputs
                 @shoot.started += instance.OnShoot;
                 @shoot.performed += instance.OnShoot;
                 @shoot.canceled += instance.OnShoot;
+                @generate.started += instance.OnGenerate;
+                @generate.performed += instance.OnGenerate;
+                @generate.canceled += instance.OnGenerate;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -421,6 +447,9 @@ namespace inputs
                 @shoot.started -= instance.OnShoot;
                 @shoot.performed -= instance.OnShoot;
                 @shoot.canceled -= instance.OnShoot;
+                @generate.started -= instance.OnGenerate;
+                @generate.performed -= instance.OnGenerate;
+                @generate.canceled -= instance.OnGenerate;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -449,6 +478,7 @@ namespace inputs
             void OnSwitchcamera3(InputAction.CallbackContext context);
             void OnSwitchcamera4(InputAction.CallbackContext context);
             void OnShoot(InputAction.CallbackContext context);
+            void OnGenerate(InputAction.CallbackContext context);
         }
     }
 }

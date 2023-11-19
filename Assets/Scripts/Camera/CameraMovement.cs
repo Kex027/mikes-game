@@ -12,8 +12,8 @@ namespace Camera
         [SerializeField] private GameObject[] cameraSpots;
         private float _xRotation = 0;
         private float _yRotation = 0;
-        private float _sensitivityX = 0.5f;
-        private float _sensitivityY = 0.5f;
+        private float _sensitivityX = 0.25f;
+        private float _sensitivityY = 0.25f;
         private Vector3 _firstPersonCameraPosition;
 
         private void Awake()

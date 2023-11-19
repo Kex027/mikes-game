@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1276867573089333667}
   - component: {fileID: 6745433283637651711}
   m_Layer: 0
-  m_Name: camera spot
+  m_Name: Camera spot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db049ca7730e4600b86d73b22264ed0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraNumber: 2
 --- !u!65 &3697781264912175898
 BoxCollider:
   m_ObjectHideFlags: 0

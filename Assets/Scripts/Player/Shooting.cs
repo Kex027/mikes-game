@@ -1,4 +1,5 @@
 using inputs;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,7 +31,7 @@ namespace Player
             {
                 IShootable shootable = hit.transform.GetComponent<IShootable>();
                 if (shootable != null)
-                    shootable.Shoot();
+                    shootable.Shoot(hit);
             }
         }
     }

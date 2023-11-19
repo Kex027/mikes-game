@@ -559,6 +559,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 313456591}
+  - component: {fileID: 313456592}
   m_Layer: 0
   m_Name: Enviroment
   m_TagString: Untagged
@@ -596,6 +597,21 @@ Transform:
   - {fileID: 505866758}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &313456592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313456590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 964fd1bdc316ec0499f5960c23165e4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectToPool: {fileID: 1651863582706379702, guid: d64d25eeec2a1aa40953eaf0b5b0634a, type: 3}
+  amountToPool: 20
 --- !u!1 &377349164
 GameObject:
   m_ObjectHideFlags: 0
@@ -1495,7 +1511,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2361290201137861774, guid: 71b717794d82f974690faa3299d5fbe0, type: 3}
       propertyPath: m_Name
-      value: camera spot (1)
+      value: Camera spot (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6046168091047897487, guid: 71b717794d82f974690faa3299d5fbe0, type: 3}
       propertyPath: cameraNumber
@@ -1561,7 +1577,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2361290201137861774, guid: 71b717794d82f974690faa3299d5fbe0, type: 3}
       propertyPath: m_Name
-      value: camera spot (2)
+      value: Camera spot (2)
       objectReference: {fileID: 0}
     - target: {fileID: 6046168091047897487, guid: 71b717794d82f974690faa3299d5fbe0, type: 3}
       propertyPath: cameraNumber
@@ -2416,11 +2432,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2361290201137861774, guid: 71b717794d82f974690faa3299d5fbe0, type: 3}
       propertyPath: m_Name
-      value: camera spot
-      objectReference: {fileID: 0}
-    - target: {fileID: 6046168091047897487, guid: 71b717794d82f974690faa3299d5fbe0, type: 3}
-      propertyPath: cameraNumber
-      value: 2
+      value: Camera spot
       objectReference: {fileID: 0}
     - target: {fileID: 7927252385536995384, guid: 71b717794d82f974690faa3299d5fbe0, type: 3}
       propertyPath: m_LocalPosition.x
