@@ -11,7 +11,7 @@ namespace Player
         private void Awake()
         {
             _playerInputs = new Control();
-            _playerInputs.player.generate.performed += Generate;
+            _playerInputs.player.generate.performed += Generate; //tu wsm nie widzi sie tego czesto ale moze byc i guess
         }
 
         private void OnEnable()

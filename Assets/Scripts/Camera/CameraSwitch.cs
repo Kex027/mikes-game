@@ -73,7 +73,7 @@ namespace Camera
 
         private static void OnCamera()
         {
-            Instance.OnChangedCamera?.Invoke();
+            Instance.OnChangedCamera?.Invoke(); // nie wiem po co static
         }
     }
 }

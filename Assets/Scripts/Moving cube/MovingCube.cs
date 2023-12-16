@@ -34,7 +34,7 @@ namespace Moving_cube
 
         private void OnTriggerEnter(Collider other)
         {
-            Vector3 direction = -other.GetComponentInChildren<Transform>().forward + Vector3.up;
+            Vector3 direction = -other.GetComponentInChildren<Transform>().forward + Vector3.up; //XD robisz poprsotu other.transform.forward
             other.GetComponent<Rigidbody>().AddForce(direction * _throwForce * 100);
         }
     }

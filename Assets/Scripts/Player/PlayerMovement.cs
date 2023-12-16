@@ -66,6 +66,8 @@ namespace Player
         }
         private void Move()
         {
+            // tutaj lepiej przypisac inputvector w dodatkowym voidzie przypisanym do _playerInputs.player.move.performed przypisac
+            // i zkaszowac zmiennie inputVector i direction tam u gory obok tych floatow tu tylko ustawiac 
             Vector2 inputVector = _playerInputs.player.move.ReadValue<Vector2>();
             Vector3 direction = dierection.forward * inputVector.y + dierection.right * inputVector.x;
             _rb.AddForce(new Vector3(direction.x, 0, direction.z).normalized * (_movementSpeed * Time.deltaTime * 700));
@@ -77,6 +79,7 @@ namespace Player
         }
         private void Crouch()
         {
+            // tak samo jak w move komentarze
             bool isCrouching = _playerInputs.player.crouch.ReadValue<float>() > 0.1f;
             
             if (IsOnGround())

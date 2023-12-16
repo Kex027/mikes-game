@@ -24,10 +24,10 @@ namespace Camera
             Vector3 startingPosition = transform.localPosition;
             
             float elapsed = 0f;
-
+// tu powinien byc float x i y 
             while (elapsed < duration)
             {
-                float x = Random.Range(1f, -1f) * strength;
+                float x = Random.Range(1f, -1f) * strength; //a tu tylko przypisanie
                 float y = Random.Range(1f, -1f) * strength;
 
                 transform.localPosition = new Vector3(startingPosition.x + x, startingPosition.y + y, startingPosition.z);

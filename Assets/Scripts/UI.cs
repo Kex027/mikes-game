@@ -8,6 +8,7 @@ public class UI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        cameraText.text = "cam: " + CameraSwitch.Instance.GetCurrentCamera();
+        cameraText.text = "cam: " + CameraSwitch.Instance.GetCurrentCamera(); 
     }
 }
+// powinienes subskrybowac do eventa w starcie i tak zmeinaic

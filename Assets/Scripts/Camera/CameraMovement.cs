@@ -9,12 +9,12 @@ namespace Camera
         [SerializeField] private Transform direction;
         private Control _playerInputs;
     
-        [SerializeField] private GameObject[] cameraSpots;
-        private float _xRotation = 0;
+        [SerializeField] private GameObject[] cameraSpots; // bym zrobil camera spot manager na singletonie z ta lista 
+        private float _xRotation = 0;                      // i stamtad bierzes te spoty najlpeiej
         private float _yRotation = 0;
         private float _sensitivityX = 0.25f;
         private float _sensitivityY = 0.25f;
-        private Vector3 _firstPersonCameraPosition;
+        private Vector3 _firstPersonCameraPosition; // powinienes do gracza dodac tez camera spot i tyle eliminuje to problemy
 
         private void Awake()
         {
@@ -49,13 +49,13 @@ namespace Camera
 
         void HandleCameraPosition()
         {
-            transform.localPosition = Vector3.zero;
+            transform.localPosition = Vector3.zero; 
             transform.localEulerAngles = Vector3.zero;
 
-            switch (CameraSwitch.Instance.GetCurrentCamera())
+            switch (CameraSwitch.Instance.GetCurrentCamera()) //japierdole ☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️☠️
             {
                 case 1:
-                    transform.SetParent(cameraSpots[0].transform, false);
+                    transform.SetParent(cameraSpots[0].transform, false); // tak jak pisalem wyzej eliminutje to problem ten
                     transform.localPosition = new Vector3(transform.localPosition.x, _player.height / 2 * 0.5f, transform.localPosition.z);
                     break;
                 case 2:
@@ -76,7 +76,7 @@ namespace Camera
 
         private void RotateCameraAndPlayer()
         {
-            Vector2 mousePosition = _playerInputs.player.camera.ReadValue<Vector2>();
+            Vector2 mousePosition = _playerInputs.player.camera.ReadValue<Vector2>(); // tak samo jak w player movement pisalem cachijsz to wyzej
             _yRotation += mousePosition.x * _sensitivityX;
             _xRotation += -mousePosition.y * _sensitivityY;
             _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);

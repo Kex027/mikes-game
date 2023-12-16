@@ -27,9 +27,9 @@ namespace Player
 
         private void Shoot(InputAction.CallbackContext context)
         {
-            if (Physics.Raycast(transform.position, transform.forward, out var hit))
+            if (Physics.Raycast(transform.position, transform.forward, out var hit)) // invert if
             {
-                IShootable shootable = hit.transform.GetComponent<IShootable>();
+                IShootable shootable = hit.transform.GetComponent<IShootable>(); //zobacz sobie try get component i go uzyj
                 if (shootable != null)
                     shootable.Shoot(hit);
             }
